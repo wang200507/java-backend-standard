@@ -2,11 +2,52 @@
 
 本仓库记录规范文档的版本演进。规范正文当前版本见 `docs/java-backend-standard.md` 头部。
 
+## v1.1 —— 仓库呈现与协作
+
+**本次只改仓库呈现层与协作配套，规范正文条款未变。**
+
+### README 语言策略调整（重要）
+
+原先「不带语言后缀一律英文」，改为**按受众分两类**：
+
+| 类别 | 文件 | 无后缀语言 | 原因 |
+|---|---|---|---|
+| 面向人的文档 | `README.md`、`CONTRIBUTING.md` | **中文** | Gitee / GitCode 首页只渲染 `README.md`；面向国内读者默认中文 |
+| 面向 AI IDE 的文件 | `AGENTS.md`、`docs/*.md`、`SKILL.md` | **英文** | 英文表述在多数模型上指令遵循更稳定 |
+
+- `README.md` → 中文（新），`README.en.md` → 英文（新增），删除 `README.zh-CN.md`。
+- Gitee 会按浏览器语言自动选择：中文浏览器看 `README.md`，英文浏览器看 `README.en.md`。
+- GitCode 只渲染 `README.md`，因此中文为唯一默认。
+- GitHub 显示 `README.md`（中文），顶部提供 `README.en.md` 入口。
+
+### README 视觉改版
+
+- 居中标题 + 副标题 + 徽章行（JDK / Spring Boot / License / 文档体量 / PRs welcome / 平台入口）。
+- 特性一行速览（emoji 分隔符），`<hr>` 分隔后进入正文。
+- 章节标题统一 emoji 前缀（🧩 这是什么 / 📚 内容速览 / 🚀 快速使用 / 🌏 多平台与语言版本 / 🧷 十条红线 / 🤝 参与贡献 / 📁 目录结构）。
+- 要点列表改为「emoji + 加粗短语 + 冒号 + 说明」的卡片式条目。
+- 中英两版样式对齐。
+
+### 协作配套（新增）
+
+- `CONTRIBUTING.md` / `CONTRIBUTING.en.md`：贡献方向、PR 流程、提交前自查清单、写作风格约定。
+- `PULL_REQUEST_TEMPLATE.md`：GitHub 根目录 PR 模板。
+- `.github/ISSUE_TEMPLATE/`：Bug 报告、条款建议模板与 `config.yml`。
+- `.gitee/`：`PULL_REQUEST_TEMPLATE.zh-CN.md`、`ISSUE_TEMPLATE.zh-CN.md`（Gitee 各自的模板目录规范）。
+- README 增加「🤝 参与贡献（欢迎 PR）」章节，含可复制的 fork → branch → sync → PR 流程与自查清单。
+
+### 多平台推送
+
+- `script/push-all.sh` 新增 `--all` 预设，一条命令推送 GitHub / Gitee / GitCode 三个已建远端。
+- 远端地址：`github` = wang200507、`gitee` = wangzy01、`gitcode` = gcw_hGwaIPtW。
+
 ## v1.0（初始版本）
 
 **基线**：Java 17 / Java 21 ｜ Spring Boot 3.x（向下兼容 2.7）
 
 ### 语言版本（v1.0）
+
+> 该约定已在 [v1.1](#v11--仓库呈现与协作) 中按受众拆分为两类，见上文。
 
 规范提供**中英双语**，不带语言后缀的文件一律为英文：
 

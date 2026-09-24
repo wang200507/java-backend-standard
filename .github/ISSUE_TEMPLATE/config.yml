@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 使用问题 / 讨论
+    url: https://github.com/wang200507/java-backend-standard/discussions
+    about: 怎么把规则接进某个 IDE、仓库怎么推多平台等问题，欢迎来这里聊。
+  - name: 规范全文
+    url: https://github.com/wang200507/java-backend-standard/blob/main/docs/java-backend-standard.zh-CN.md
+    about: 提 Issue 前建议先翻一下正文章节，确认不是已有条款。

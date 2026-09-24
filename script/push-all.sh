@@ -2,6 +2,7 @@
 # 一次性把本仓库推送到 GitHub / Gitee / GitCode 等多个代码平台。
 #
 # 用法：
+#   bash script/push-all.sh --all                 # 推送到本仓库已登记的三个平台（推荐）
 #   bash script/push-all.sh <仓库URL> [仓库URL ...]
 #
 # 示例：
@@ -13,7 +14,7 @@
 # 说明：
 #   - 远端名称按域名自动识别（github / gitee / gitcode），识别不出则用 remote1、remote2…
 #   - 远端已存在时自动更新地址，可反复执行。
-#   - 假设三个平台都已创建**空仓库**（不要勾选自动生成 README，以免首次推送冲突）。
+#   - 假设各平台都已创建**空仓库**（不要勾选自动生成 README，以免首次推送冲突）。
 #
 # 后续单独推送：
 #   git push github main
@@ -24,9 +25,18 @@ set -euo pipefail
 
 BRANCH="${PUSH_BRANCH:-main}"
 
+# 本仓库已登记的平台（--all 时使用）
+PRESET_URLS=(
+  "https://github.com/wang200507/java-backend-standard.git"
+  "https://gitee.com/wangzy01/java-backend-standard.git"
+  "https://gitcode.com/gcw_hGwaIPtW/java-backend-standard.git"
+)
+
 usage() {
   cat <<'EOF'
-用法：bash script/push-all.sh <仓库URL> [仓库URL ...]
+用法：
+  bash script/push-all.sh --all                 # 推送到已登记的三个平台
+  bash script/push-all.sh <仓库URL> [仓库URL ...]
 
 示例：
   bash script/push-all.sh \
@@ -52,6 +62,14 @@ remote_name_for() {
 if [ "$#" -eq 0 ] || [ "${1-}" = "-h" ] || [ "${1-}" = "--help" ]; then
   usage
   exit 0
+fi
+
+# --all：使用本仓库已登记的平台地址
+if [ "${1-}" = "--all" ]; then
+  set -- "${PRESET_URLS[@]}"
+  echo "使用内置平台列表："
+  printf '  - %s\n' "$@"
+  echo
 fi
 
 if [ ! -d .git ]; then
