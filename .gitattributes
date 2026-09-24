@@ -1,0 +1,21 @@
+# 统一换行符为 LF（规范文档与脚本必须 LF，否则 .sh 在 Linux 失效、Diff 反复变动）
+* text=auto eol=lf
+
+# 明确文本类型
+*.md       text eol=lf
+*.sh       text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.json     text eol=lf
+*.xml      text eol=lf
+
+# 二进制文件不做换行转换
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.pdf      binary
+*.xlsx     binary
+*.jar      binary
+*.class    binary

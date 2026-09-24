@@ -1,0 +1,54 @@
+######################################################################
+# 构建产物
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+!.mvn/wrapper/maven-wrapper.jar
+
+######################################################################
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+nbproject/
+.rebel.xml
+*.versionsBackup
+
+######################################################################
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+######################################################################
+# 日志与临时文件
+*.log
+*.tmp
+*.swp
+*.bak
+hs_err_pid*.log
+replay_pid*.log
+
+######################################################################
+# AI 助手本地数据（会话记忆等，不应提交）
+.workbuddy/
+.claude/settings.local.json
+.cursor/mcp.json
+
+######################################################################
+# 本地环境覆盖配置（含凭据，禁止提交）
+application-local.yml
+application-local.yaml
+application-local.properties
+*.local.env
+.env
+.env.local
