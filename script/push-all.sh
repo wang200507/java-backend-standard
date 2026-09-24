@@ -26,10 +26,12 @@ set -euo pipefail
 BRANCH="${PUSH_BRANCH:-main}"
 
 # 本仓库已登记的平台（--all 时使用）
+# 注意：GitCode 用 SSH 地址——Git Credential Manager 不支持 gitcode.com，
+#       HTTPS 推送会报 "could not read Username"，需改用 SSH 公钥认证。
 PRESET_URLS=(
   "https://github.com/wang200507/java-backend-standard.git"
   "https://gitee.com/wangzy01/java-backend-standard.git"
-  "https://gitcode.com/gcw_hGwaIPtW/java-backend-standard.git"
+  "git@gitcode.com:gcw_hGwaIPtW/java-backend-standard.git"
 )
 
 usage() {
