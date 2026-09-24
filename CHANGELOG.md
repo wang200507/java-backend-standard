@@ -39,7 +39,16 @@
 ### 多平台推送
 
 - `script/push-all.sh` 新增 `--all` 预设，一条命令推送 GitHub / Gitee / GitCode 三个已建远端。
-- 远端地址：`github` = wang200507、`gitee` = wangzy01、`gitcode` = gcw_hGwaIPtW。
+- 三个平台的实际地址：
+
+| 远端名 | 地址 | 认证方式 |
+|---|---|---|
+| `github` | https://github.com/wang200507/java-backend-standard.git | HTTPS（gh / GCM 已缓存凭据） |
+| `gitee` | https://gitee.com/wangzy01/java-backend-standard.git | HTTPS（GCM 已缓存凭据） |
+| `gitcode` | git@gitcode.com:wangzhy01/java-backend-standard.git | **SSH 公钥**（GCM 不支持 gitcode.com） |
+
+- GitCode 仓库创建时的命名空间 `gcw_hGwaIPtW` 会重定向到 `wangzhy01`，仓库内统一使用后者。
+- 推送注意：非交互环境加 `GIT_TERMINAL_PROMPT=0 GCM_INTERACTIVE=Never`，避免卡在等待输入。
 
 ## v1.0（初始版本）
 

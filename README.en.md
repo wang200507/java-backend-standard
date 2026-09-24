@@ -13,7 +13,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-wang200507-181717?logo=github)](https://github.com/wang200507/java-backend-standard)
 [![Gitee](https://img.shields.io/badge/Gitee-wangzy01-c71d23?logo=gitee)](https://gitee.com/wangzy01/java-backend-standard)
-[![GitCode](https://img.shields.io/badge/GitCode-gcw__hGwaIPtW-2f6fed)](https://gitcode.com/gcw_hGwaIPtW/java-backend-standard)
+[![GitCode](https://img.shields.io/badge/GitCode-wangzhy01-2f6fed)](https://gitcode.com/wangzhy01/java-backend-standard)
 
 [中文](README.md) · [Full manual](docs/java-backend-standard.md) · [Cheat sheet](docs/java-backend-standard.md#appendix-c-cheat-sheet)
 
@@ -91,7 +91,7 @@ docs/java-backend-standard.md  →  Appendix C
 |---|---|---|
 | GitHub | [wang200507/java-backend-standard](https://github.com/wang200507/java-backend-standard) | Chinese (English entry linked) |
 | Gitee | [wangzy01/java-backend-standard](https://gitee.com/wangzy01/java-backend-standard) | Chinese (auto-switches to English for English browsers) |
-| GitCode | [gcw_hGwaIPtW/java-backend-standard](https://gitcode.com/gcw_hGwaIPtW/java-backend-standard) | Chinese |
+| GitCode | [wangzhy01/java-backend-standard](https://gitcode.com/wangzhy01/java-backend-standard) | Chinese |
 
 | Purpose | Chinese | English |
 |---|---|---|

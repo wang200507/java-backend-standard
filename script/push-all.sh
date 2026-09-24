@@ -31,7 +31,7 @@ BRANCH="${PUSH_BRANCH:-main}"
 PRESET_URLS=(
   "https://github.com/wang200507/java-backend-standard.git"
   "https://gitee.com/wangzy01/java-backend-standard.git"
-  "git@gitcode.com:gcw_hGwaIPtW/java-backend-standard.git"
+  "git@gitcode.com:wangzhy01/java-backend-standard.git"
 )
 
 usage() {

@@ -13,7 +13,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-wang200507-181717?logo=github)](https://github.com/wang200507/java-backend-standard)
 [![Gitee](https://img.shields.io/badge/Gitee-wangzy01-c71d23?logo=gitee)](https://gitee.com/wangzy01/java-backend-standard)
-[![GitCode](https://img.shields.io/badge/GitCode-gcw__hGwaIPtW-2f6fed)](https://gitcode.com/gcw_hGwaIPtW/java-backend-standard)
+[![GitCode](https://img.shields.io/badge/GitCode-wangzhy01-2f6fed)](https://gitcode.com/wangzhy01/java-backend-standard)
 
 [English](README.en.md) · [完整手册](docs/java-backend-standard.zh-CN.md) · [速查表](docs/java-backend-standard.zh-CN.md#附录-c速查表cheat-sheet)
 
@@ -91,7 +91,7 @@ docs/java-backend-standard.zh-CN.md  →  附录 C 速查表
 |---|---|---|
 | GitHub | [wang200507/java-backend-standard](https://github.com/wang200507/java-backend-standard) | 中文（附英文入口） |
 | Gitee | [wangzy01/java-backend-standard](https://gitee.com/wangzy01/java-backend-standard) | 中文（英文浏览器自动切英文） |
-| GitCode | [gcw_hGwaIPtW/java-backend-standard](https://gitcode.com/gcw_hGwaIPtW/java-backend-standard) | 中文 |
+| GitCode | [wangzhy01/java-backend-standard](https://gitcode.com/wangzhy01/java-backend-standard) | 中文 |
 
 | 用途 | 中文 | English |
 |---|---|---|
