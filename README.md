@@ -1,39 +1,49 @@
-# Java 后端开发规范（通用版）
+# Java Backend Development Standard
 
-面向 **Java 17 / 21 + Spring Boot 3.x** 后端服务的通用编码规范与最佳实践。基于阿里巴巴《Java 开发手册》嵩山版核心规约，补充 JDK 17–21 语言特性与 Spring Boot 3 工程实践，**不绑定任何具体业务项目**，可直接用于新项目、代码评审与 AI 助手规则。
+A general-purpose coding standard and best-practice guide for **Java 17 / 21 + Spring Boot 3.x** backend services. Built on the core rules of Alibaba's *Java Development Manual* (Songshan edition), extended with JDK 17–21 language features and Spring Boot 3 engineering practice. **Not tied to any specific business project** — use it for new projects, code reviews, and AI assistant rules.
 
-## 内容
+> Chinese edition: [README.zh-CN.md](README.zh-CN.md) ｜ 中文版见 [README.zh-CN.md](README.zh-CN.md)
 
-完整规范见 [`docs/java-backend-standard.md`](docs/java-backend-standard.md)（约 820 行）。
+## Contents
 
-| 章节 | 内容 |
+The full standard lives in [`docs/java-backend-standard.md`](docs/java-backend-standard.md) (~830 lines).
+
+| Chapter | Content |
 |---|---|
-| 一 编程规约 | 命名、常量、格式、OOP、日期时间、集合、并发、控制语句、注释、接口、其他 |
-| 二 JDK 17–21 语言特性 | 可用性双列对照、`var`、`record`、文本块、`switch` 表达式、模式匹配、`sealed`、不可变集合、Stream/Optional、编译参数 |
-| 三 Spring Boot 3 工程规范 | 分层、Controller/Service/数据访问、统一返回与异常、参数校验、事务、缓存与分布式锁、鉴权、软删除、依赖注入、配置与可观测性 |
-| 四 异常日志 | 错误码、异常处理、日志规约 |
-| 五 单元测试 | JUnit 5 + Mockito 实践 |
-| 六 安全规约 | 越权、脱敏、注入、反序列化、密钥管理 |
-| 七 MySQL | 建表、索引、SQL 语句 |
-| 八 工程结构与依赖 | 分层、Maven 依赖管理、服务器与 JVM |
-| 九 设计规约 | 建模、设计原则、ADR |
-| 十 Spring Boot 2.7 → 3.x 迁移 | `javax`→`jakarta`、依赖坐标、配置变更、虚拟线程、迁移清单 |
-| 附录 A/B/C/D | 错误码、迁移对照表、速查表、变更说明 |
+| 1 Coding Conventions | naming, constants, formatting, OOP, date/time, collections, concurrency, control flow, comments, API contract, misc |
+| 2 JDK 17–21 Language Features | availability matrix, `var`, `record`, text blocks, `switch` expressions, pattern matching, `sealed`, immutable collections, Streams/Optional, compiler flags |
+| 3 Spring Boot 3 Engineering | layering, controller/service/data access, unified response and exceptions, validation, transactions, caching and distributed locks, authorization, soft delete, dependency injection, configuration and observability |
+| 4 Exceptions and Logging | error codes, exception handling, logging |
+| 5 Unit Testing | JUnit 5 + Mockito practice |
+| 6 Security | privilege escalation, masking, injection, deserialization, key management |
+| 7 MySQL | table design, indexes, SQL statements |
+| 8 Project Structure and Dependencies | layering, Maven dependency management, servers and JVM |
+| 9 Design Principles | modeling, design principles, ADRs |
+| 10 Spring Boot 2.7 → 3.x Migration | `javax`→`jakarta`, dependency coordinates, configuration changes, virtual threads, migration checklist |
+| Appendix A/B/C/D | error codes, migration tables, cheat sheet, change log |
 
-## 快速使用
+## Language editions
 
-### 1. 作为 AI 助手规则（推荐）
+| Language | Rule entry | Full manual | Skill |
+|---|---|---|---|
+| **English (default)** | `AGENTS.md` | `docs/java-backend-standard.md` | `skills/java-backend-standard/SKILL.md` |
+| 中文 | `AGENTS.zh-CN.md` | `docs/java-backend-standard.zh-CN.md` | `skills/java-backend-standard/SKILL.zh-CN.md` |
 
-根目录 `AGENTS.md` 是精简版规则入口（红线 + 惯例 + 口诀），**Cursor / OpenCode / Codex / Copilot 等会原生读取**。要分发到更多 IDE（Trae / Cursor / JetBrains / Claude Code 等）：
+The unsuffixed filename is always English. `AGENTS.md` in particular is the file AI IDEs read automatically, so English is the default there.
+
+## Quick start
+
+### 1. As AI assistant rules (recommended)
+
+The root `AGENTS.md` is the condensed rule entry (hard rules + conventions + cheat sheet). **Cursor / OpenCode / Codex / Copilot read it natively.** To distribute to more IDEs (Trae / Cursor / JetBrains / Claude Code):
 
 ```bash
-bash script/sync-agent-rules.sh            # 只写入本仓库内落点
-bash script/sync-agent-rules.sh --global   # 额外写入用户级全局落点
+bash script/sync-agent-rules.sh            # write targets inside this repo only
+bash script/sync-agent-rules.sh --global   # also write user-level global targets
+bash script/sync-agent-rules.sh --lang zh  # distribute the Chinese rules instead
 ```
 
-### 2. 作为技能安装
-
-把 `skills/java-backend-standard/` 复制到对应目录即可：
+### 2. Install as a skill
 
 ```bash
 # Claude Code
@@ -42,60 +52,63 @@ cp -r skills/java-backend-standard ~/.claude/skills/
 cp -r skills/java-backend-standard ~/.workbuddy/skills/
 ```
 
-### 3. 直接阅读
+### 3. Read it directly
 
-打开 [`docs/java-backend-standard.md`](docs/java-backend-standard.md)，或看 [附录 C 速查表](docs/java-backend-standard.md#附录-c速查表cheat-sheet) 的十句口诀。
+Open [`docs/java-backend-standard.md`](docs/java-backend-standard.md), or jump to the [cheat sheet](docs/java-backend-standard.md#appendix-c-cheat-sheet).
 
-## 同步到多个代码平台
+## Publishing to multiple platforms
 
-本仓库可同时托管在 GitHub / Gitee / GitCode。首次推送：
+This repository can be hosted on GitHub / Gitee / GitCode simultaneously. First push:
 
 ```bash
-# 在三个平台分别创建空仓库后，执行：
+# After creating an empty repository on each platform:
 bash script/push-all.sh \
-  https://github.com/<用户名>/java-backend-standard.git \
-  https://gitee.com/<用户名>/java-backend-standard.git \
-  https://gitcode.com/<用户名>/java-backend-standard.git
+  https://github.com/<user>/java-backend-standard.git \
+  https://gitee.com/<user>/java-backend-standard.git \
+  https://gitcode.com/<user>/java-backend-standard.git
 ```
 
-脚本会依次添加 `github` / `gitee` / `gitcode` 三个远端并推送。后续更新只需 `git push github master` 等按需推送。
+The script adds the `github` / `gitee` / `gitcode` remotes (detected from the domain) and pushes to each. Afterwards, push individually with `git push github main`, etc.
 
-## 十条红线
+## The ten hard rules
 
-1. 生产**永远禁用** `--enable-preview`。
-2. JDK 17 上禁用虚拟线程 / `switch` 模式匹配 / `record` 解构 / 顺序集合。
-3. 编译用 `<release>` 而非 `source/target`；Spring Boot 3 必须加 `-parameters`。
-4. `record` 只做值对象，不能做 ORM 实体。
-5. `var` 仅限局部变量且类型可一眼看出。
-6. `List.of/Map.of` 不可变且不允许 null。
-7. 禁止依赖 `sun.*` 内部 API（JEP 403 强封装）。
-8. 时间类型新代码一律 `LocalDateTime`，禁止新增 `Date`。
-9. SQL 参数用 `#{}`，禁止 `${}`；查询显式列 + 带软删除条件。
-10. 事务 `rollbackFor = Exception.class`，事务内不调 RPC。
+1. **Never** `--enable-preview` in production.
+2. On JDK 17: no virtual threads, `switch` pattern matching, record deconstruction, or sequenced collections.
+3. Compile with `<release>`, not `source`/`target`; Spring Boot 3 requires `-parameters`.
+4. `record` is for value objects only — never an ORM entity.
+5. `var` only for local variables with an obvious type.
+6. `List.of/Map.of` are immutable and reject null.
+7. Never depend on `sun.*` internal APIs (JEP 403).
+8. All new date/time code uses `LocalDateTime`; never add a new `Date`.
+9. SQL uses `#{}`, never `${}`; select explicit columns and include the soft-delete condition.
+10. Transactions use `rollbackFor = Exception.class`; never call RPC inside a transaction.
 
-## 目录结构
+## Repository layout
 
 ```
 .
-├── README.md                            本文件
-├── AGENTS.md                            跨 IDE 精简规则入口
+├── README.md / README.zh-CN.md          this file (EN / ZH)
+├── AGENTS.md / AGENTS.zh-CN.md          cross-IDE condensed rule entry (EN / ZH)
 ├── LICENSE                              MIT
-├── CHANGELOG.md                         版本记录
+├── CHANGELOG.md                         version history
 ├── docs/
-│   └── java-backend-standard.md         完整规范正文
+│   ├── java-backend-standard.md          full standard (EN)
+│   └── java-backend-standard.zh-CN.md    full standard (ZH)
 ├── script/
-│   ├── sync-agent-rules.sh              分发规则到各 IDE 落点
-│   └── push-all.sh                      推送到多平台远端
+│   ├── sync-agent-rules.sh              distribute rules to IDE targets
+│   └── push-all.sh                      push to multiple platform remotes
 └── skills/
     └── java-backend-standard/
-        └── SKILL.md                     可直接安装为 AI 技能
+        ├── SKILL.md                      installable AI skill (EN)
+        ├── SKILL.zh-CN.md                installable AI skill (ZH)
+        └── references/                   manual copies, generated by the sync script
 ```
 
-## 约定
+## Conventions
 
-- 规范正文**唯一来源**是 `AGENTS.md`（精简）+ `docs/java-backend-standard.md`（完整）。
-- 各 IDE 落点文件由脚本生成，**不要直接编辑**（下次同步会被覆盖）。
-- 修改规范：改 `AGENTS.md` → 跑同步脚本 → 提交。
+- The **single source of truth** is `AGENTS.md` (condensed) plus `docs/java-backend-standard.md` (full).
+- Files under the IDE target directories are generated by the script — **do not edit them directly** (the next sync overwrites them).
+- To change the standard: edit `AGENTS.md` → run the sync script → commit.
 
 ## License
 

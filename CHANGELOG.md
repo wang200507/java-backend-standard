@@ -6,6 +6,19 @@
 
 **基线**：Java 17 / Java 21 ｜ Spring Boot 3.x（向下兼容 2.7）
 
+### 语言版本（v1.0）
+
+规范提供**中英双语**，不带语言后缀的文件一律为英文：
+
+| 语言 | 规则入口 | 完整手册 | 技能 |
+|---|---|---|---|
+| 英文（默认） | `AGENTS.md` | `docs/java-backend-standard.md` | `skills/java-backend-standard/SKILL.md` |
+| 中文 | `AGENTS.zh-CN.md` | `docs/java-backend-standard.zh-CN.md` | `skills/java-backend-standard/SKILL.zh-CN.md` |
+
+英文为默认版的原因：`AGENTS.md` 是 AI IDE 自动读取的文件名，英文表述在多数模型上指令遵循更稳定、分词更省 token。中文版为其忠实译本，内容逐条对应。
+
+同步脚本支持语言切换：`bash script/sync-agent-rules.sh --lang zh`。技能包内**同时**保留两版手册副本。
+
 ### 相比《阿里巴巴 Java 开发手册（嵩山版）》的增强
 
 - **JDK 17–21 语言特性**：可用性双列对照表（17 / 21）；`var`、`record`、文本块、`switch` 表达式、`instanceof` 模式匹配、`sealed`、不可变集合工厂、Stream 与 Optional、编译与 JVM 参数。
